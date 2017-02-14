@@ -8,9 +8,9 @@ int main(){
     double* f;
     long* i = new long;
     long s, c, m;
-    s = 0L;
-    c = 0L;
-    m = 0L;
+    s = 0ULL;
+    c = 0ULL;
+    m = 0ULL;
 
     userInput(s,c,m);
 
@@ -27,22 +27,19 @@ int main(){
 }
 
 void userInput(long &s, long &c, long &m){
+    double input;
     bool sign;
     long power, mantissa;
-    cout << "Is your number positive or negative?" << endl;
-    cout << "(Type 0 for positive or 1 for negative): ";
-    cin >> sign;
-    cout << "What is your float power (c=1023+bin_exp)? ";
-    cin >> power;
-    cout << "What is your mantissa? ";
-    cin >> mantissa;
+    cout << "Enter the number you would like to see: ";
+    cin >> input;
 
-    if (sign)
+    if (input < 0)
         s = 1ULL<<63;
     else
         s = 0L;
+    c = log2(input);
     c = power<<52;
     m = mantissa;
 
     cout << hex << s << ' ' << hex << c << ' ' << hex << m << endl;
-} 
+}
